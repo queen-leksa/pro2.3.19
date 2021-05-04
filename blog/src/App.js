@@ -5,6 +5,7 @@ import React from "react";
 import {BrowserRouter, Link, Switch, Route} from "react-router-dom";
 import {Container, Row, Col} from "react-bootstrap";
 import Cuisine from './components/Сuisine';
+import User from './components/User';
 
 class App extends React.Component {
   constructor(props) {
@@ -48,6 +49,11 @@ class App extends React.Component {
             </Route>
             {this.setRoutes()}
           </Switch>
+          <Row>
+            <Col xs="3">
+              <User/>
+            </Col>
+          </Row>
         </Container>
       </BrowserRouter>
     );
