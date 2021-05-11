@@ -3,9 +3,9 @@ import './App.css';
 
 import React from "react";
 import {BrowserRouter, Link, Switch, Route} from "react-router-dom";
-import {Container, Row, Col} from "react-bootstrap";
+import {Container, Row, Col, Nav} from "react-bootstrap";
 import Cuisine from './components/Сuisine';
-import User from './components/User';
+import Log from './components/Log';
 
 class App extends React.Component {
   constructor(props) {
@@ -34,10 +34,29 @@ class App extends React.Component {
       <BrowserRouter>
         <Container>
           <Row>
-            <Link to="/">Главная</Link>
-            <Link to="/ru">Русская</Link>
-            <Link to="/eu">Европейская</Link>
-            <Link to="/as">Восточная</Link>
+            <Col md={6}>
+              <Nav>
+                <Nav.Item>
+                  <Link to="/" className="nav-link">Главная</Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="/ru" className="nav-link">Русская</Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="/eu" className="nav-link">Европейская</Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Link to="/as" className="nav-link">Восточная</Link>
+                </Nav.Item>
+              </Nav>
+            </Col>
+            <Col  md={6}>
+              <Nav className="justify-content-end">
+                <Nav.Item>
+                  <Link to="/log" className="nav-link">Войти</Link>
+                </Nav.Item>
+              </Nav>
+            </Col>
           </Row>
           <Switch>
             <Route path="/" exact>
@@ -48,12 +67,15 @@ class App extends React.Component {
               </Row>
             </Route>
             {this.setRoutes()}
+            <Route path="/log" exact>
+              <Log/>
+            </Route>
           </Switch>
-          <Row>
+          {/* <Row>
             <Col xs="3">
               <User/>
             </Col>
-          </Row>
+          </Row> */}
         </Container>
       </BrowserRouter>
     );
